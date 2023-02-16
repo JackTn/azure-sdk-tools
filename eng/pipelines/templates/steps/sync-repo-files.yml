@@ -68,12 +68,14 @@ steps:
               $SourceSyncFilePath = '${{repo.value.Path}}'
               $SourceBranch = '${{ repo.value.Branch }}'
 
-              $pullRequestBranch = "Sync-from-$SourceFolder"
-
               $TargetRepo = '${{ target.key }}'
               $TargetFolder = $TargetRepo -split "/" -join "-"
               $TargetSyncFilePath = '${{target.value.Path}}'
               $TargetBranch = '${{ target.value.Branch }}'
+
+              $pullRequestBranch = "Sync-from-$SourceFolder"
+              $pullRequestTitle = "[AutoSync] Sync $($TargetSyncFilePath) folder from $($SourceRepo) repo"
+              $pullRequestBody = "Sync $($TargetSyncFilePath) folder from [$SourceRepo](https://github.com/$SourceRepo/tree/$SourceBranch$SourceSyncFilePath)"
 
               Function FailOnError([string]$ErrorMessage, $CleanUpScripts = 0) {
                 if ($LASTEXITCODE -ne 0) {
@@ -164,8 +166,8 @@ steps:
                   -Uri "https://github.com/$($TargetRepo)" `
                   -Head "$($OwnerName):$($pullRequestBranch)" `
                   -Base $($TargetBranch) `
-                  -Title "test title2" `
-                  -Body "test body2" `
+                  -Title $($pullRequestTitle) `
+                  -Body $($pullRequestBody) `
                   -MaintainerCanModify
                 FailOnError "create $($pullRequestBranch) pull request: $_"
 
