@@ -150,7 +150,7 @@ steps:
                 -Uri "https://github.com/$($TargetRepo)" `
                 -State Open `
                 -Head "$($OwnerName):$($pullRequestBranch)" `
-                -Base $($TargetBranch) `
+                -Base $($TargetBranch)
               FailOnError "Get $($TargetRepo) pull request: $_"
 
               if ($pullRequests.Count -ne 0) { 
@@ -163,7 +163,7 @@ steps:
                   -Base $($TargetBranch) `
                   -Title "test title2" `
                   -Body "test body2" `
-                  -MaintainerCanModify `
+                  -MaintainerCanModify
                 FailOnError "create $($pullRequestBranch) pull request: $_"
 
                 echo "PR has been created at https://github.com/$($TargetRepo)/pull/$($newPullRequest.number)"
