@@ -92,6 +92,9 @@ steps:
                 Set-Location $TargetFolder
               }
 
+              git config --global user.email "$UserEmail"
+              git config --global user.name "$UserName"
+
               if (!$TargetBranch) {
                 $defaultBranch = (git remote show Target | Out-String) -replace "(?ms).*HEAD branch: (\w+).*", '$1'
                 Write-Host "No target branch. Fetch default branch $defaultBranch."
