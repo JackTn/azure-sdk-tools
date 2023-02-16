@@ -5,8 +5,8 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: SyncRepos
-    displayName: Sync public repos
+  - job: SyncFiles
+    displayName: Sync special files
     steps:
     - template: ./templates/steps/sync-repo-files.yml
       parameters:

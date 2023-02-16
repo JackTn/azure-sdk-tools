@@ -24,7 +24,7 @@ steps:
       $SourceFolder = $SourceRepo -split "/" -join "-"
       $SourceBranch = '${{ repo.value.Branch }}'
       if (-not (Test-Path ${{ repo.key }})) {
-        New-Item -Path ${{ repo.key }} -ItemType Directory -Force
+        New-Item -Path $SourceFolder -ItemType Directory -Force
         Set-Location $SourceFolder
         git init
         git remote add Source "https://${{ parameters.GH_TOKEN }}@github.com/${SourceRepo}.git"
