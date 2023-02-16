@@ -16,6 +16,9 @@ parameters:
     type: string
 
 steps:
+- pwsh: |
+   Install-Module -Name PowerShellForGitHub -Force
+  displayName: Install PowerShellForGitHub
 
 - ${{ each repo in parameters.Repos }}:
   - pwsh: |
@@ -52,3 +55,119 @@ steps:
     displayName: ${{ repo.key }} - Clone ${{ repo.value.Branch }}
     continueOnError: true
 
+  - ${{ each target in repo.value.TargetRepos }}:
+    - pwsh: |
+        Set-PsDebug -Trace 1
+        $UserName = "azure-sdk"
+        $UserEmail = "azuresdk@microsoft.com"
+
+        $home_dir = $pwd
+
+        $SourceRepo = '${{ repo.key }}'
+        $SourceFolder = $SourceRepo -split "/" -join "-"
+        $SourceSyncFilePath = '${{repo.value.Path}}'
+        $SourceBranch = '${{ repo.value.Branch }}'
+
+        $TargetRepo = '${{ target.key }}'
+        $TargetFolder = $TargetRepo -split "/" -join "-"
+        $TargetSyncFilePath = '${{target.value.Path}}'
+        $TargetBranch = '${{ target.value.Branch }}'
+
+        Function FailOnError([string]$ErrorMessage, $CleanUpScripts = 0) {
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "#`#vso[task.logissue type=error]$ErrorMessage"
+            if ($CleanUpScripts -ne 0) { Invoke-Command $CleanUpScripts }
+            exit 1
+          }
+        }
+
+        if (-not (Test-Path $TargetFolder)) {
+          New-Item -Path $TargetFolder -ItemType Directory -Force
+          Set-Location $TargetFolder
+          git init
+          git remote add Target "https://${{parameters.GH_TOKEN}}@github.com/${TargetRepo}.git"
+        } else {
+          Set-Location $TargetFolder
+        }
+
+        if (!$TargetBranch) {
+          $defaultBranch = (git remote show Target | Out-String) -replace "(?ms).*HEAD branch: (\w+).*", '$1'
+          Write-Host "No target branch. Fetch default branch $defaultBranch."
+        }
+
+        git fetch --all
+        FailOnError "Failed to fetch DefaultBranch ${defaultBranch}."
+
+        $isExistBranch = $(git branch --list --remotes "Target/$TargetBranch")
+        if ($isExistBranch) {
+          git checkout -b $TargetBranch "Target/$TargetBranch"
+        }
+        else {
+          git checkout -b $TargetBranch "Target/$defaultBranch"
+        }
+
+        if (git diff "Target/$defaultBranch") {
+          git -c user.name=$UserName -c user.email=$UserEmail merge --strategy-option=theirs "Target/$defaultBranch"
+          FailOnError "Failed to merge for ${TargetRepo}:${TargetBranch}"
+          git -c user.name=$UserName -c user.email=$UserEmail rebase --strategy-option=theirs "Target/$defaultBranch"
+          FailOnError "Failed to rebase for ${TargetRepo}:${TargetBranch}"
+        }
+
+        git push --force Target "${TargetBranch}:refs/heads/${TargetBranch}"
+        FailOnError "Failed to push to ${TargetRepo}:${TargetBranch}"
+
+        $FromPath = Join-Path $home_dir "$SourceFolder" "$SourceSyncFilePath"
+        $ToPath = Join-Path $home_dir "$TargetFolder" "$TargetSyncFilePath"
+
+        if (test-path $ToPath) {
+          Remove-Item "$ToPath" -Force -Recurse
+        }
+        
+        Copy-Item -Path "$FromPath" -Destination "$ToPath" -Recurse -Force
+
+        $untrackkedFiles = git ls-files -o 
+        if ($untrackkedFiles) {
+          git add .
+          git commit -m "Add untracked files"
+          git push --force Target $($TargetBranch)
+          FailOnError "Failed to push to $($TargetRepo):$($TargetBranch)"
+        } else {
+          $diffResult = git diff "refs/remotes/Target/$($defaultBranch)"
+          if ($diffResult) {
+            git add .
+            git commit -m "Sync files from $SourceReo/$SourceBranch"
+            git push --force Target $($TargetBranch)
+            FailOnError "Failed to push to $($TargetRepo):$($TargetBranch)"
+          }
+        }
+
+        $OwnerName = ($TargetRepo -split '/')[0] 
+        $pullRequests = Get-GitHubPullRequest `
+          -AccessToken ${{ parameters.GH_TOKEN }} `
+          -Uri "https://github.com/$($TargetRepo)" `
+          -State Open `
+          -Head "$($OwnerName):$($TargetBranch)" `
+          -Base "main" 
+        FailOnError "Get $($TargetRepo) pull request: $_"
+
+        if ($pullRequests.Count -ne 0) { 
+          echo "PR has been created at https://github.com/$($TargetRepo)/pull/$($pullRequests.number)"
+        } else {
+          $newPullRequest = New-GitHubPullRequest `
+            -AccessToken ${{ parameters.GH_TOKEN }} `
+            -Uri "https://github.com/$($TargetRepo)" `
+            -Head "$($OwnerName):$($TargetBranch)" `
+            -Base $($defaultBranch) `
+            -Title "test title2" `
+            -Body "test body2" `
+            -MaintainerCanModify `
+          FailOnError "create $($TargetBranch) pull request: $_"
+
+          echo "PR has been created at https://github.com/$($TargetRepo)/pull/$($newPullRequest.number)"
+        }
+
+        Set-PsDebug -Off
+
+      displayName: ${{ target.key }} - Sync ${{ target.value.Path }} files from ${{ repo.key }}
+      workingDirectory: ${{ repo.key }}
+      continueOnError: true
