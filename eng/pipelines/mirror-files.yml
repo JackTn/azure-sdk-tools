@@ -1,20 +1,26 @@
-trigger:
-- main
-
-# trigger: none
+trigger: none
+pr: none
 
 pool:
-  vmImage: ubuntu-latest
+  name: azsdk-pool-mms-ubuntu-2204-general
+  vmImage: MMSUbuntu22.04
 
 jobs:
-- job: Foo1
-  steps:
-  - script: echo Hello!
+  - job: SyncRepos
+    displayName: Sync public repos
+    steps:
+    - template: ./templates/steps/sync-repo-files.yml
+      parameters:
+        GH_TOKEN: $(azuresdk-github-pat)
+        Repos:
 
-- job: Foo2
-  steps:
-  - script: echo Hello!
-
-- job: Foo3
-  steps:
-  - script: echo Hello!
+          JackTn/TestRepo-One:
+            Branch: "main"
+            Path: "/specification/common-types/"
+            TargetRepos:
+              JackTn/TestRepo-Two:
+                Branch: "main"
+                Path: "/specification/common-types/"
+              JackTn/TestRepo-Three:
+                Branch: "main"
+                Path: "/specification/common-types/"
