@@ -168,6 +168,5 @@ steps:
 
         Set-PsDebug -Off
 
-      displayName: ${{ target.key }} - Sync ${{ target.value.Path }} files from ${{ repo.key }}
-      workingDirectory: ${{ repo.key }}
+      displayName: Sync ${{ target.value.Path }} files from ${{ repo.key }} to ${{ target.key }}
       continueOnError: true
