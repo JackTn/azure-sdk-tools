@@ -116,8 +116,8 @@ steps:
                 FailOnError "Failed to rebase for ${TargetRepo}:${TargetBranch}"
               }
 
-              git push --force Target "${TargetBranch}:refs/heads/${TargetBranch}"
-              FailOnError "Failed to push to ${TargetRepo}:${TargetBranch}"
+              git push --force Target "${pullRequestBranch}:refs/heads/${pullRequestBranch}"
+              FailOnError "Failed to push to ${pullRequestBranch}:${pullRequestBranch}"
 
               $FromPath = Join-Path $home_dir "$SourceFolder" "$SourceSyncFilePath"
               $ToPath = Join-Path $home_dir "$TargetFolder" "$TargetSyncFilePath"
