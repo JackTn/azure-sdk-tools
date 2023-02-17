@@ -114,11 +114,9 @@ steps:
                 git checkout -b $pullRequestBranch "Target/$TargetBranch"
               }
 
-              if (git diff "Target/$TargetBranch") {
+              if (git diff "refs/remotes/Target/$($TargetBranch)") {
                 git -c user.name=$UserName -c user.email=$UserEmail merge --strategy-option=theirs "Target/$TargetBranch"
                 FailOnError "Failed to merge for ${TargetRepo}:${TargetBranch}"
-                git -c user.name=$UserName -c user.email=$UserEmail rebase --strategy-option=theirs "Target/$TargetBranch"
-                FailOnError "Failed to rebase for ${TargetRepo}:${TargetBranch}"
               }
 
               git push Target "${pullRequestBranch}:refs/heads/${pullRequestBranch}"
