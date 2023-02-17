@@ -136,14 +136,14 @@ steps:
               $untrackkedFiles = git ls-files -o 
               if ($untrackkedFiles) {
                 git add .
-                git commit -m "Add untracked files"
+                git commit -m "Sync files from $SourceRepo/$SourceBranch"
                 git push --force Target $($pullRequestBranch)
                 FailOnError "Failed to push to $($TargetRepo):$($pullRequestBranch)"
               } else {
                 $diffResult = git diff "refs/remotes/Target/$($TargetBranch)"
                 if ($diffResult) {
                   git add .
-                  git commit -m "Sync files from $SourceReo/$SourceBranch"
+                  git commit -m "Sync files from $SourceRepo/$SourceBranch"
                   git push --force Target $($pullRequestBranch)
                   FailOnError "Failed to push to $($TargetRepo):$($pullRequestBranch)"
                 }
