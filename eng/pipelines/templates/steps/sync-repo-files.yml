@@ -121,7 +121,7 @@ steps:
                 FailOnError "Failed to rebase for ${TargetRepo}:${TargetBranch}"
               }
 
-              git push --force Target "${pullRequestBranch}:refs/heads/${pullRequestBranch}"
+              git push Target "${pullRequestBranch}:refs/heads/${pullRequestBranch}"
               FailOnError "Failed to push to ${pullRequestBranch}:${pullRequestBranch}"
 
               $FromPath = Join-Path $home_dir "$SourceFolder" "$SourceSyncFilePath"
@@ -137,14 +137,14 @@ steps:
               if ($untrackkedFiles) {
                 git add .
                 git commit -m "Sync files from $SourceRepo/$SourceBranch"
-                git push --force Target $($pullRequestBranch)
+                git push Target $($pullRequestBranch)
                 FailOnError "Failed to push to $($TargetRepo):$($pullRequestBranch)"
               } else {
                 $diffResult = git diff "refs/remotes/Target/$($TargetBranch)"
                 if ($diffResult) {
                   git add .
                   git commit -m "Sync files from $SourceRepo/$SourceBranch"
-                  git push --force Target $($pullRequestBranch)
+                  git push Target $($pullRequestBranch)
                   FailOnError "Failed to push to $($TargetRepo):$($pullRequestBranch)"
                 }
               }
