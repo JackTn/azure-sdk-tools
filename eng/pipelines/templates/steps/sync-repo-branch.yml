@@ -79,6 +79,7 @@ steps:
           if (!$TargetBranch) {
             $TargetBranch = $defaultBranch
           }
+          Write-Host ${{ target.value.Rebase }}
           if (-not '${{ target.value.Rebase }}') {
             git checkout -B target_branch source_branch
             git push Target "target_branch:refs/heads/${TargetBranch}"

@@ -20,4 +20,4 @@ jobs:
             Branch: main
             TargetRepos:
               Jacktn/TestRepo-two:
-              Rebase: true
+                Rebase: true
