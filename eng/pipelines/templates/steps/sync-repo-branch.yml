@@ -47,7 +47,7 @@ steps:
         exit 1
       }
 
-      git checkout -B source_branch "refs/remotes/Source/${SourceBranch}"
+      git checkout "refs/remotes/Source/${SourceBranch}"
 
       Set-PsDebug -Off
 
@@ -79,9 +79,8 @@ steps:
           if (!$TargetBranch) {
             $TargetBranch = $defaultBranch
           }
-          Write-Host ${{ target.value.Rebase }}
           if (-not '${{ target.value.Rebase }}') {
-            git checkout -B target_branch source_branch
+            git checkout -B target_branch "refs/remotes/Source/${SourceBranch}"
             git push --force Target "target_branch:refs/heads/${TargetBranch}"
             FailOnError "Failed to push to ${TargetRepo}:${TargetBranch}"
 
@@ -90,7 +89,7 @@ steps:
             FailOnError "Failed to fetch TargetBranch ${TargetBranch}."
 
             git checkout -B target_branch "refs/remotes/Target/${TargetBranch}"
-            git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" rebase --strategy-option=theirs source_branch
+            git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" rebase --strategy-option=theirs "refs/remotes/Source/${SourceBranch}"
             FailOnError "Failed to rebase for ${TargetRepo}:${TargetBranch}" {
               git status
               git diff

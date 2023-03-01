@@ -1,50 +1,29 @@
 [CmdletBinding(SupportsShouldProcess = $true)]
 param(
   [Parameter(Mandatory = $true)]
-  [string]$RepoOwner,
-
-  [Parameter(Mandatory = $true)]
-  [string]$RepoName,
-
-  [Parameter(Mandatory = $true)]
-  [string]$BaseBranch,
-
-  [Parameter(Mandatory = $true)]
-  [string]$PROwner,
-
-  [Parameter(Mandatory = $true)]
-  [string]$PRBranch,
-
-  [Parameter(Mandatory = $true)]
-  [string]$AuthToken,
-
-  [Parameter(Mandatory = $true)]
-  [string]$PRTitle,
+  [string]$SourceRepo,
 
   [Parameter(Mandatory = $false)]
-  [string]$PRBody = $PRTitle,
+  [string]$SourceBranch,
 
-  [string]$PRLabels,
+  [Parameter(Mandatory = $true)]
+  [string]$TargetRepo,
 
-  [string]$UserReviewers,
-
-  [string]$TeamReviewers,
-
-  [string]$Assignees,
-
-  [boolean]$CloseAfterOpenForTesting=$false,
-
-  [boolean]$OpenAsDraft=$false
+  [Parameter(Mandatory = $false)]
+  [string]$TargetBranch
 )
+
+. (Join-Path $PSScriptRoot common.ps1)
+# $($env:GH_TOKEN)
 
 Set-PsDebug -Trace 1
 $SourceRepo = '${{ repo.key }}'
 $SourceBranch = '${{ repo.value.Branch }}'
-if (-not (Test-Path ${{ repo.key }})) {
-  New-Item -Path ${{ repo.key }} -ItemType Directory -Force
+if (-not (Test-Path $SourceRepo)) {
+  New-Item -Path $SourceRepo -ItemType Directory -Force
   Set-Location $SourceRepo
   git init
-  git remote add Source "https://${{ parameters.GH_TOKEN }}@github.com/${SourceRepo}.git"
+  git remote add Source "https://$($env:GH_TOKEN)@github.com/$($SourceRepo).git"
 } else {
   Set-Location $SourceRepo
 }
@@ -58,7 +37,7 @@ if (!$SourceBranch) {
 
 git fetch --no-tags Source $SourceBranch
 if ($LASTEXITCODE -ne 0) {
-  Write-Host "#`#vso[task.logissue type=error]Failed to fetch ${SourceRepo}:${SourceBranch}"
+  Write-Host "#`#vso[task.logissue type=error]Failed to fetch $($SourceRepo):$($SourceBranch)"
   exit 1
 }
 
@@ -77,7 +56,7 @@ Function FailOnError([string]$ErrorMessage, $CleanUpScripts = 0) {
 }
 
 try {
-  git remote add Target "https://${{ parameters.GH_TOKEN }}@github.com/${TargetRepo}.git"
+  git remote add Target "https://$($env:GH_TOKEN)@github.com/$($TargetRepo).git"
 
   $defaultBranch = (git remote show Target | Out-String) -replace "(?ms).*HEAD branch: (\w+).*", '$1'
   if (!$SourceBranch) {
@@ -86,26 +65,26 @@ try {
   if (!$TargetBranch) {
     $TargetBranch = $defaultBranch
   }
-  Write-Host ${{ target.value.Rebase }}
+  
   if (-not '${{ target.value.Rebase }}') {
     git checkout -B target_branch source_branch
-    git push --force Target "target_branch:refs/heads/${TargetBranch}"
-    FailOnError "Failed to push to ${TargetRepo}:${TargetBranch}"
+    git push --force Target "target_branch:refs/heads/$($TargetBranch)"
+    FailOnError "Failed to push to $($TargetRepo):$($TargetBranch)"
 
   } else {
     git fetch --no-tags Target $TargetBranch
-    FailOnError "Failed to fetch TargetBranch ${TargetBranch}."
+    FailOnError "Failed to fetch TargetBranch $($TargetBranch)."
 
-    git checkout -B target_branch "refs/remotes/Target/${TargetBranch}"
+    git checkout -B target_branch "refs/remotes/Target/$($TargetBranch)"
     git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" rebase --strategy-option=theirs source_branch
-    FailOnError "Failed to rebase for ${TargetRepo}:${TargetBranch}" {
+    FailOnError "Failed to rebase for $($TargetRepo):$($TargetBranch)" {
       git status
       git diff
       git rebase --abort
     }
 
-    git push --force Target "target_branch:refs/heads/${TargetBranch}"
-    FailOnError "Failed to push to ${TargetRepo}:${TargetBranch}"
+    git push --force Target "target_branch:refs/heads/$($TargetBranch)"
+    FailOnError "Failed to push to $($TargetRepo):$($TargetBranch)"
   }
 } finally {
   git remote remove Target
