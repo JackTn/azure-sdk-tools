@@ -25,11 +25,12 @@ steps:
   inputs:
     pwsh: true
     workingDirectory: ${{ parameters.WorkingDirectory }}
-    filePath: ${{ parameters.ScriptDirectory }}/Sync-Repo-Branch.ps1
+    filePath: ${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1
     arguments: >
       -SourceRepo "Jacktn/TestRepo-one"
       -SourceBranch "main"
       -TargetRepo "Jacktn/TestRepo-two"
       -TargetBranch "main"
+      -Rebase false
   env:
     GH_TOKEN: $(azuresdk-github-pat)

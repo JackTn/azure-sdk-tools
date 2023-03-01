@@ -11,6 +11,9 @@ param(
 
   [Parameter(Mandatory = $false)]
   [string]$TargetBranch,
+
+  [Parameter(Mandatory = $false)]
+  [bool]$Rebase,
   
   $user="azure-sdk",
   $email="azuresdk@microsoft.com"
@@ -62,7 +65,7 @@ try {
     $TargetBranch = $defaultBranch
   }
 
-  if (-not '${{ target.value.Rebase }}') {
+  if ($($Rebase)) {
     git checkout -B target_branch $($SourceBranch)
     git push --force Target "target_branch:refs/heads/$($TargetBranch)"
     FailOnError "Failed to push to $($TargetRepo):$($TargetBranch)"
