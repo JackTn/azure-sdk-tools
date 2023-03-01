@@ -17,11 +17,8 @@ param(
 )
 
 . (Join-Path $PSScriptRoot common.ps1)
-# $($env:GH_TOKEN)
 
 Set-PsDebug -Trace 1
-$SourceRepo = '${{ repo.key }}'
-$SourceBranch = '${{ repo.value.Branch }}'
 if (-not (Test-Path $SourceRepo)) {
   New-Item -Path $SourceRepo -ItemType Directory -Force
   Set-Location $SourceRepo
