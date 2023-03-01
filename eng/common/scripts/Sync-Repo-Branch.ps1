@@ -10,7 +10,10 @@ param(
   [string]$TargetRepo,
 
   [Parameter(Mandatory = $false)]
-  [string]$TargetBranch
+  [string]$TargetBranch,
+  
+  $user="azure-sdk",
+  $email="azuresdk@microsoft.com"
 )
 
 . (Join-Path $PSScriptRoot common.ps1)
@@ -41,11 +44,7 @@ if ($LASTEXITCODE -ne 0) {
   exit 1
 }
 
-git checkout -B source_branch "refs/remotes/Source/${SourceBranch}"
-
-$SourceBranch = '${{ repo.value.Branch }}'
-$TargetRepo = '${{ target.key }}'
-$TargetBranch = '${{ coalesce(target.value.Branch, repo.value.Branch) }}'
+git checkout ${SourceBranch}
 
 Function FailOnError([string]$ErrorMessage, $CleanUpScripts = 0) {
   if ($LASTEXITCODE -ne 0) {
@@ -65,9 +64,9 @@ try {
   if (!$TargetBranch) {
     $TargetBranch = $defaultBranch
   }
-  
+
   if (-not '${{ target.value.Rebase }}') {
-    git checkout -B target_branch source_branch
+    git checkout -B target_branch $($SourceBranch)
     git push --force Target "target_branch:refs/heads/$($TargetBranch)"
     FailOnError "Failed to push to $($TargetRepo):$($TargetBranch)"
 
@@ -76,7 +75,7 @@ try {
     FailOnError "Failed to fetch TargetBranch $($TargetBranch)."
 
     git checkout -B target_branch "refs/remotes/Target/$($TargetBranch)"
-    git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" rebase --strategy-option=theirs source_branch
+    git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" rebase --strategy-option=theirs $($SourceBranch)
     FailOnError "Failed to rebase for $($TargetRepo):$($TargetBranch)" {
       git status
       git diff

@@ -11,12 +11,12 @@ jobs:
     displayName: Sync owner repos for test
 
     steps:
-    - template: ./templates/steps/sync-repo-branch.yml
-      parameters:
-        GH_TOKEN: $(azuresdk-github-pat)
-        Repos:
+    - template: ./templates/steps/mirror-repos-test-step.yml
+      # parameters:
+      #   GH_TOKEN: $(azuresdk-github-pat)
+      #   Repos:
 
-          Jacktn/TestRepo-one:
-            Branch: main
-            TargetRepos:
-              Jacktn/TestRepo-two:
+      #     Jacktn/TestRepo-one:
+      #       Branch: main
+      #       TargetRepos:
+      #         Jacktn/TestRepo-two:

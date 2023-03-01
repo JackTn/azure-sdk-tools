@@ -1,0 +1,36 @@
+parameters:
+  # BaseBranchName: $(Build.SourceBranch)
+  # PRBranchName: not-specified
+  # PROwner: azure-sdk
+  # CommitMsg: not-specified
+  # RepoOwner: Azure
+  # RepoName: $(Build.Repository.Name)
+  # PushArgs:
+  # WorkingDirectory: $(System.DefaultWorkingDirectory)
+  # PRTitle: not-specified
+  # PRBody: ''
+  # ScriptDirectory: eng/common/scripts
+  # GHReviewersVariable: ''
+  # GHTeamReviewersVariable: ''
+  # GHAssignessVariable: ''
+  # # Multiple labels seperated by comma, e.g. "bug, APIView"
+  # PRLabels: ''
+  # SkipCheckingForChanges: false
+  # CloseAfterOpenForTesting: false
+  # OpenAsDraft: false
+
+steps:
+- task: PowerShell@2
+  displayName: Sync step
+  inputs:
+  pwsh: true
+  workingDirectory: ${{ parameters.WorkingDirectory }}
+  filePath: ${{ parameters.ScriptDirectory }}/Sync-Repo-Branch.ps1
+  arguments: >
+    -PRBranchName "${{ parameters.BaseRepoBranch }}"
+    -SourceRepo "Jacktn/TestRepo-one"
+    -SourceBranch "main"
+    -TargetRepo "Jacktn/TestRepo-two"
+    -TargetBranch "main"
+  env:
+    GH_TOKEN: $(azuresdk-github-pat)
