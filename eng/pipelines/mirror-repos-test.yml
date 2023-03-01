@@ -11,7 +11,7 @@ jobs:
     displayName: Sync owner repos for test
 
     steps:
-    - template: /eng/common/pipelines/templates/steps/mirror-repos-test-step.yml
+    - template: /eng/pipelines/templates/steps/mirror-repos-test-step.yml
       # parameters:
       #   GH_TOKEN: $(azuresdk-github-pat)
       #   Repos:
