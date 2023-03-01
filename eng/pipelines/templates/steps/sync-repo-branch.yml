@@ -47,7 +47,7 @@ steps:
         exit 1
       }
 
-      git checkout -B ${SourceBranch} "refs/remotes/Source/${SourceBranch}"
+      git checkout ${SourceBranch}
 
       Set-PsDebug -Off
 
