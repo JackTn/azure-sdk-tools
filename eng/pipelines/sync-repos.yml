@@ -19,3 +19,4 @@ jobs:
             TargetRepos:
               Jacktn/TestRepo-two:
                 Rebase: true
+                Path: [1,23]
