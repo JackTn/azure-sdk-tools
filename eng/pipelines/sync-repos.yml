@@ -12,10 +12,11 @@ jobs:
 
     steps:
     - template: /eng/pipelines/templates/steps/sync-repo.yml
-      # parameters:
-      #   Repos:
-
-      #     Jacktn/TestRepo-one:
-      #       Branch: main
-      #       TargetRepos:
-      #         Jacktn/TestRepo-two:
+      parameters:
+        Repos:
+          Jacktn/TestRepo-one:
+            Branch: main
+            TargetRepos:
+              Jacktn/TestRepo-two:
+                Branch: main
+                Rebase:
