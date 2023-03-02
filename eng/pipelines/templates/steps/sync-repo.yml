@@ -55,9 +55,9 @@ steps:
           -SourceBranch '${{ repo.value.Branch }}'
           -TargetRepo '${{ target.key }}'
           -TargetBranch '${{ coalesce(target.value.Branch, repo.value.Branch) }}'
-          -Rebase ${{ target.value.Rebase }}
+          -Rebase '${{ target.value.Rebase }}'
           -AuthToken '$(azuresdk-github-pat)'
-      env:
-        GH_TOKEN: $(azuresdk-github-pat)
+      # env:
+      #   GH_TOKEN: $(azuresdk-github-pat)
 
       # - ${{ if eq(parameters.experimentalTemplate, true) }}:
