@@ -60,7 +60,7 @@ steps:
       #       -AuthToken '$(azuresdk-github-pat)'
       - script: |
           echo 1
-    ${{ else }}:
+    - ${{ else }}:
       - script: |
           echo 2
     
