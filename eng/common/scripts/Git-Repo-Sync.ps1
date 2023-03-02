@@ -16,8 +16,7 @@ param(
   [string]$AuthToken,
 
   [Parameter(Mandatory = $false)]
-  [AllowNull()]
-  [bool]$Rebase,
+  [string]$Rebase,
   
   $user="azure-sdk",
   $email="azuresdk@microsoft.com"
