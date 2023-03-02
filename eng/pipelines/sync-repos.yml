@@ -19,4 +19,4 @@ jobs:
             TargetRepos:
               Jacktn/TestRepo-two:
                 Branch: main
-                Rebase: $True
+                Rebase: $False
