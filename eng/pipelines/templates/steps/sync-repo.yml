@@ -32,5 +32,6 @@ steps:
       -TargetRepo "Jacktn/TestRepo-two"
       -TargetBranch "main"
       -Rebase $False
+      -AuthToken "$(azuresdk-github-pat)"
   env:
     GH_TOKEN: $(azuresdk-github-pat)

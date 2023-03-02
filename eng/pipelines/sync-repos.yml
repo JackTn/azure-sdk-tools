@@ -8,12 +8,11 @@ pool:
 
 jobs:
   - job: SyncRepos
-    displayName: Sync owner repos for test
+    displayName: Sync source repos to target repos
 
     steps:
-    - template: /eng/pipelines/templates/steps/mirror-repos-test-step.yml
+    - template: /eng/pipelines/templates/steps/sync-repo.yml
       # parameters:
-      #   GH_TOKEN: $(azuresdk-github-pat)
       #   Repos:
 
       #     Jacktn/TestRepo-one:

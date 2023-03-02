@@ -12,6 +12,9 @@ param(
   [Parameter(Mandatory = $false)]
   [string]$TargetBranch,
 
+  [Parameter(Mandatory = $true)]
+  [string]$AuthToken,
+
   [Parameter(Mandatory = $false)]
   [AllowNull()]
   [bool]$Rebase,
@@ -27,7 +30,7 @@ if (-not (Test-Path $SourceRepo)) {
   New-Item -Path $SourceRepo -ItemType Directory -Force
   Set-Location $SourceRepo
   git init
-  git remote add Source "https://$($env:GH_TOKEN)@github.com/$($SourceRepo).git"
+  git remote add Source "https://$($AuthToken)@github.com/$($SourceRepo).git"
 } else {
   Set-Location $SourceRepo
 }
@@ -56,7 +59,7 @@ Function FailOnError([string]$ErrorMessage, $CleanUpScripts = 0) {
 }
 
 try {
-  git remote add Target "https://$($env:GH_TOKEN)@github.com/$($TargetRepo).git"
+  git remote add Target "https://$($AuthToken)@github.com/$($TargetRepo).git"
 
   $defaultBranch = (git remote show Target | Out-String) -replace "(?ms).*HEAD branch: (\w+).*", '$1'
   if (!$SourceBranch) {
