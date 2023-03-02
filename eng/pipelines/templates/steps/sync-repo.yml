@@ -59,3 +59,5 @@ steps:
           -AuthToken '$(azuresdk-github-pat)'
       env:
         GH_TOKEN: $(azuresdk-github-pat)
+
+      # - ${{ if eq(parameters.experimentalTemplate, true) }}:
