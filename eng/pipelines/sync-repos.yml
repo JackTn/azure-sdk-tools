@@ -17,5 +17,3 @@ jobs:
           Jacktn/TestRepo-one:
             TargetRepos:
               Jacktn/TestRepo-two:
-                PushArgs: "--force"
-                Rebase: True
