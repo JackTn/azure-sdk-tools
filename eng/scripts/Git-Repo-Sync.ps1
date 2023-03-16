@@ -50,7 +50,7 @@ param(
   
 )
 
-. (Join-Path $PSScriptRoot common.ps1)
+. (Join-Path $PSScriptRoot ../common/scripts/common.ps1)
 
 $User="azure-sdk"
 $Email="azuresdk@microsoft.com"
