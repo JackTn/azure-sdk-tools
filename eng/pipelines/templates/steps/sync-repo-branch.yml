@@ -37,7 +37,7 @@ steps:
       inputs:
         pwsh: true
         workingDirectory: ${{ parameters.WorkingDirectory }}
-        filePath: /eng/scripts/Git-Repo-Sync.ps1
+        filePath: $(Build.SourcesDirectory)/eng/scripts/Git-Repo-Sync.ps1
         arguments: >
           -SourceRepo '${{ repo.key }}'
           -SourceBranch '${{ repo.value.Branch }}'
