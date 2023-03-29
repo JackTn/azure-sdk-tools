@@ -34,11 +34,11 @@ steps:
       inputs:
         pwsh: true
         workingDirectory: ${{ parameters.WorkingDirectory }}
-        filePath: ${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1
+        filePath: ./${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1
         arguments: >
           -SourceRepo '${{ repo.key }}'
           -SourceBranch '${{ repo.value.Branch }}'
           -TargetRepo '${{ target.key }}'
           -TargetBranch '${{ coalesce(target.value.Branch, repo.value.Branch) }}'
           -Rebase '${{ target.value.Rebase }}'
-          -AuthToken '$(azuresdk-github-pat)'
+          -AuthToken '${{ parameters.GH_TOKEN }}'
