@@ -25,6 +25,9 @@ parameters:
 
 steps:
 
+- script: echo ${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1 !!
+  displayName: 'echo file path'
+
 - ${{ each repo in parameters.Repos }}:
 
   - ${{ each target in repo.value.TargetRepos }}:
@@ -34,7 +37,7 @@ steps:
       inputs:
         pwsh: true
         workingDirectory: ${{ parameters.WorkingDirectory }}
-        filePath: ./${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1
+        filePath: ${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1
         arguments: >
           -SourceRepo '${{ repo.key }}'
           -SourceBranch '${{ repo.value.Branch }}'
