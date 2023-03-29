@@ -28,6 +28,12 @@ steps:
 - script: echo ${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1 !!
   displayName: 'echo file path'
 
+- pwsh: |
+    Write-Host "Build.ArtifactStagingDirectory is $(Build.ArtifactStagingDirectory)"
+    Write-Host "Pipeline.Workspace is $(Pipeline.Workspace)"
+    Get-ChildItem $(Build.ArtifactStagingDirectory)
+    Get-ChildItem $(Pipeline.Workspace)
+
 - ${{ each repo in parameters.Repos }}:
 
   - ${{ each target in repo.value.TargetRepos }}:
