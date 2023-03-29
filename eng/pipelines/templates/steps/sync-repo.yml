@@ -9,6 +9,9 @@ parameters:
     default: $(System.DefaultWorkingDirectory)
 
 steps:
+  
+- script: echo ${{ parameters.ScriptDirectory }}/Git-Repo-Sync.ps1 !!
+  displayName: 'echo file path'
 
 - ${{ each repo in parameters.Repos }}:
 
