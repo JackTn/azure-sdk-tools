@@ -36,7 +36,7 @@ steps:
       displayName: Sync Repo from ${{ repo.key }} to ${{ target.key }}
       inputs:
         pwsh: true
-        filePath: $(Build.SourcesDirectory)/eng/scripts/Git-Repo-Sync.ps1
+        filePath: $(System.DefaultWorkingDirectory)/eng/scripts/Git-Repo-Sync.ps1
         arguments: >
           -SourceRepo '${{ repo.key }}'
           -SourceBranch '${{ repo.value.Branch }}'
