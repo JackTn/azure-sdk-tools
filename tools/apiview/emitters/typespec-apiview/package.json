@@ -64,7 +64,7 @@
     "@typespec/eslint-plugin": ">=0.57 <1.0",
     "@typespec/library-linter": ">=0.57 <1.0",
     "@typespec/prettier-plugin-typespec": ">=0.57 <1.0",
-    "@types/mocha": "~9.1.0",
+    "@types/mocha": "~10.0.8",
     "@types/node": "~18.11.19",
     "c8": "^9.1.0",
     "cspell": "^8.8.1",
@@ -74,7 +74,7 @@
     "prettier": "~3.2.5",
     "rimraf": "~5.0.7",
     "typescript": "~5.4.5",
-    "mocha": "~9.2.0",
+    "mocha": "~10.7.3",
     "mocha-junit-reporter": "~2.0.2",
     "mocha-multi-reporters": "~1.5.1",
     "source-map-support": "^0.5.19"
