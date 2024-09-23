@@ -45,7 +45,7 @@
     "@types/ajv-keywords": "^3.4.0",
     "@types/ajv-merge-patch": "^4.1.0",
     "@types/commonmark": "^0.27.3",
-    "@types/convict": "^5.2.2",
+    "@types/convict": "^6.1.6",
     "@types/express-oauth-server": "^2.0.2",
     "@types/fs-extra": "^5.0.5",
     "@types/glob": "^7.1.1",
