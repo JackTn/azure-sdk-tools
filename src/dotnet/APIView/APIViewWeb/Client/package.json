@@ -31,7 +31,7 @@
     "eslint-plugin-vue": "^8.5.0",
     "fetch-blob": "^2.1.2",
     "form-data-encoder": "^1.9.0",
-    "formdata-node": "^4.4.1",
+    "formdata-node": "^6.0.3",
     "inspectpack": "^4.7.1",
     "mini-css-extract-plugin": "^2.7.2",
     "node-fetch": "^2.6.11",
