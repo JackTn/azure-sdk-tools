@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "^7.28.2",
-    "js-tokens": "^8.0.0"
+    "js-tokens": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
