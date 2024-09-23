@@ -5982,12 +5982,12 @@
       }
     },
     "node_modules/handlebars": {
-      "version": "4.7.7",
-      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz",
-      "integrity": "sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==",
+      "version": "4.7.8",
+      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.8.tgz",
+      "integrity": "sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==",
       "dependencies": {
         "minimist": "^1.2.5",
-        "neo-async": "^2.6.0",
+        "neo-async": "^2.6.2",
         "source-map": "^0.6.1",
         "wordwrap": "^1.0.0"
       },
@@ -10408,6 +10408,26 @@
       "resolved": "https://registry.npmjs.org/async/-/async-3.2.3.tgz",
       "integrity": "sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g=="
     },
+    "node_modules/postman-runtime/node_modules/handlebars": {
+      "version": "4.7.7",
+      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz",
+      "integrity": "sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==",
+      "dependencies": {
+        "minimist": "^1.2.5",
+        "neo-async": "^2.6.0",
+        "source-map": "^0.6.1",
+        "wordwrap": "^1.0.0"
+      },
+      "bin": {
+        "handlebars": "bin/handlebars"
+      },
+      "engines": {
+        "node": ">=0.4.7"
+      },
+      "optionalDependencies": {
+        "uglify-js": "^3.1.4"
+      }
+    },
     "node_modules/postman-runtime/node_modules/iconv-lite": {
       "version": "0.6.3",
       "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
@@ -10482,6 +10502,14 @@
       },
       "engines": {
         "node": ">=10"
+      }
+    },
+    "node_modules/postman-runtime/node_modules/source-map": {
+      "version": "0.6.1",
+      "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz",
+      "integrity": "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==",
+      "engines": {
+        "node": ">=0.10.0"
       }
     },
     "node_modules/postman-runtime/node_modules/yallist": {
@@ -17569,12 +17597,12 @@
       }
     },
     "handlebars": {
-      "version": "4.7.7",
-      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz",
-      "integrity": "sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==",
+      "version": "4.7.8",
+      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.8.tgz",
+      "integrity": "sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==",
       "requires": {
         "minimist": "^1.2.5",
-        "neo-async": "^2.6.0",
+        "neo-async": "^2.6.2",
         "source-map": "^0.6.1",
         "uglify-js": "^3.1.4",
         "wordwrap": "^1.0.0"
@@ -20973,6 +21001,18 @@
           "resolved": "https://registry.npmjs.org/async/-/async-3.2.3.tgz",
           "integrity": "sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g=="
         },
+        "handlebars": {
+          "version": "4.7.7",
+          "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz",
+          "integrity": "sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==",
+          "requires": {
+            "minimist": "^1.2.5",
+            "neo-async": "^2.6.0",
+            "source-map": "^0.6.1",
+            "uglify-js": "^3.1.4",
+            "wordwrap": "^1.0.0"
+          }
+        },
         "iconv-lite": {
           "version": "0.6.3",
           "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
@@ -21027,6 +21067,11 @@
           "requires": {
             "lru-cache": "^6.0.0"
           }
+        },
+        "source-map": {
+          "version": "0.6.1",
+          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz",
+          "integrity": "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="
         },
         "yallist": {
           "version": "4.0.0",
