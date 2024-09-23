@@ -13,7 +13,7 @@
     "url": "git+https://github.com/azure-sdk-tools.git"
   },
   "dependencies": {
-    "@types/node": "^7.0.5",
+    "@types/node": "^22.5.5",
     "@types/yargs": "^8.0.1",
     "yargs": "^8.0.2"
   },
