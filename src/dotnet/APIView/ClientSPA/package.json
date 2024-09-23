@@ -26,7 +26,7 @@
     "jquery": "^3.7.1",
     "ngx-cookie-service": "16.0",
     "ngx-timeago": "^3.0.0",
-    "ngx-ui-scroll": "^3.2.0",
+    "ngx-ui-scroll": "^3.2.1",
     "primeicons": "^6.0.1",
     "primeng": "^16.1.0",
     "quill": "^2.0.2",
