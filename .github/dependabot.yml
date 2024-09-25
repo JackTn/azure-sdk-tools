@@ -6,7 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "/tools/sdk-ai-bots/Embeddings"
     schedule:
       interval: "weekly"
     # Optional settings for pip
