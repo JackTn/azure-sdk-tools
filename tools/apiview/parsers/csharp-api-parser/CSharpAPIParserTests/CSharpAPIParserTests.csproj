@@ -14,7 +14,7 @@
     <PackageReference Include="Azure.Core.Expressions.DataFactory" Version="1.0.0" />
     <PackageReference Include="Azure.Security.Attestation" Version="1.0.0" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.21.2" />
-    <PackageReference Include="Azure.Template" Version="1.0.3-beta.4055065" />
+    <PackageReference Include="Azure.Template" Version="1.0.3-beta.20201117" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="Newtonsoft.Json.Schema" Version="4.0.1" />
