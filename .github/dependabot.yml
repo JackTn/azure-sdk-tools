@@ -5,9 +5,5 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/tools/sdk-testgen/packages/autorest.testmodeler"
-    schedule:
-      interval: "daily"
 
 
