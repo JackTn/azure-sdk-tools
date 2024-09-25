@@ -27,7 +27,7 @@
   "dependencies": {
     "@azure-tools/openapi-tools-common": "^1.2.2",
     "@typescript-eslint/scope-manager": "^7.17.0",
-    "@typescript-eslint/types": "^7.17.0",
+    "@typescript-eslint/types": "^8.7.0",
     "@typescript-eslint/typescript-estree": "^7.17.0",
     "@typescript-eslint/utils": "^7.17.0",
     "@typescript-eslint/visitor-keys": "^7.17.0",
