@@ -15,8 +15,8 @@ importers:
         specifier: ^7.17.0
         version: 7.18.0
       '@typescript-eslint/types':
-        specifier: ^7.17.0
-        version: 7.18.0
+        specifier: ^8.7.0
+        version: 8.7.0
       '@typescript-eslint/typescript-estree':
         specifier: ^7.17.0
         version: 7.18.0(typescript@5.5.3)
@@ -618,6 +618,10 @@ packages:
   '@typescript-eslint/types@7.18.0':
     resolution: {integrity: sha512-iZqi+Ds1y4EDYUtlOOC+aUmxnE9xS/yCigkjA7XpTKV6nCBd3Hp/PRGGmdwnfkV2ThMyYldP1wRpm/id99spTQ==}
     engines: {node: ^18.18.0 || >=20.0.0}
+
+  '@typescript-eslint/types@8.7.0':
+    resolution: {integrity: sha512-LLt4BLHFwSfASHSF2K29SZ+ZCsbQOM+LuarPjRUuHm+Qd09hSe3GCeaQbcCr+Mik+0QFRmep/FyZBO6fJ64U3w==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/typescript-estree@7.18.0':
     resolution: {integrity: sha512-aP1v/BSPnnyhMHts8cf1qQ6Q1IFwwRvAQGRvBFkWlo3/lH29OXA3Pts+c10nxRxIBrDnoMqzhgdwVe5f2D6OzA==}
@@ -2091,6 +2095,8 @@ snapshots:
       - supports-color
 
   '@typescript-eslint/types@7.18.0': {}
+
+  '@typescript-eslint/types@8.7.0': {}
 
   '@typescript-eslint/typescript-estree@7.18.0(typescript@5.5.3)':
     dependencies:
