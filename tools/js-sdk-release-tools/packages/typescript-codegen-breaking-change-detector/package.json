@@ -30,7 +30,7 @@
     "@typescript-eslint/types": "^7.17.0",
     "@typescript-eslint/typescript-estree": "^7.17.0",
     "@typescript-eslint/utils": "^7.17.0",
-    "@typescript-eslint/visitor-keys": "^7.17.0",
+    "@typescript-eslint/visitor-keys": "^8.7.0",
     "commander": "^12.1.0",
     "fs-extra": "^11.2.0",
     "glob": "^11.0.0",
