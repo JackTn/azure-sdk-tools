@@ -17,4 +17,9 @@ updates:
     directory: "/src/java/apiview-java-processor"
     schedule:
       interval: "weekly"
+      
+  - package-ecosystem: "nuget"
+    directory: "/src/dotnet/APIView/APIView"
+    schedule:
+      interval: "weekly"
 
