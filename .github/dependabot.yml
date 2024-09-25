@@ -5,8 +5,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "nuget"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
+    # Optional settings for pip
+    commit-message:
+      prefix: "chore(deps):"
 
