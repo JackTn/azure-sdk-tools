@@ -42,7 +42,7 @@
     "typescript-eslint": "^7.17.0"
   },
   "devDependencies": {
-    "@types/eslint": "^8.56.10",
+    "@types/eslint": "^9.6.1",
     "@types/eslint-scope": "^3.7.7",
     "@types/fs-extra": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
