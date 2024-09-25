@@ -1,25 +1,739 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
 updates:
-  - package-ecosystem: "pip"
-    directory: "/tools/sdk-ai-bots/Embeddings"
+  - package-ecosystem: 'npm'
+    directory: eng/common/spelling
     schedule:
-      interval: "weekly"
-    # Optional settings for pip
+      interval: weekly
     commit-message:
-      prefix: "chore(deps):"
-      
-  - package-ecosystem: "maven"
-    directory: "/src/java/apiview-java-processor"
+      prefix: 'package(npm):'
+  - package-ecosystem: 'pip'
+    directory: eng/scripts/python/apiview-syncdb
     schedule:
-      interval: "weekly"
-      
-  - package-ecosystem: "nuget"
-    directory: "/src/dotnet/APIView/APIView"
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: 'pip'
+    directory: eng/scripts/python/docs-automation
     schedule:
-      interval: "weekly"
-
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: maven
+    directory: packages/java-packages/codesnippet-maven-plugin
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(maven):'
+  - package-ecosystem: maven
+    directory: >-
+      packages/java-packages/codesnippet-maven-plugin/src/test/resources/project-to-test
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(maven):'
+  - package-ecosystem: 'pip'
+    directory: packages/python-packages/apiview-gpt
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/APIView/APIView
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/APIView/APIViewIntegrationTests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/APIView/APIViewJsonUtility
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/APIView/APIViewUITests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/APIView/APIViewUnitTests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/APIView/APIViewWeb
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'npm'
+    directory: src/dotnet/APIView/APIViewWeb/Client
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: src/dotnet/APIView/ClientSPA
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/Azure.ClientSdk.Analyzers/Azure.ClientSdk.Analyzers
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/Azure.ClientSdk.Analyzers/Azure.ClientSdk.Analyzers.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: src/dotnet/Azure.ClientSdk.Analyzers/TestReferenceWithInternalsVisibleTo
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_alias_diagnostics
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_alias_export
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_const
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_diagnostics
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_external_alias_exporter
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_external_alias_source
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_external_module
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_func_decl
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_interface
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_major_version
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_multi_module/A/B
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_multi_module/A
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_multi_module
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_multi_recursive_alias
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_package_name/test_package_name@v1.0.0
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_recursive_alias
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_service_group/group/internal
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_service_group/group/test_alias_export
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_struct
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_subpackage
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go/cmd/testdata/test_vars
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: gomod
+    directory: src/go
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(gomod):'
+  - package-ecosystem: maven
+    directory: src/java/apiview-java-processor
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(maven):'
+  - package-ecosystem: nuget
+    directory: tools/agent-time-extractor/AgentTimeExtractor
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'npm'
+    directory: tools/apiview/emitters/typespec-apiview
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: tools/apiview/parsers/apiview-treestyle-parser-schema
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: tools/apiview/parsers/csharp-api-parser/CSharpAPIParser
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/apiview/parsers/csharp-api-parser/CSharpAPIParserTests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'npm'
+    directory: tools/apiview/parsers/js-api-parser
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: tools/apiview/parsers/swagger-api-parser/SwaggerApiParser
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/apiview/parsers/swagger-api-parser/SwaggerApiParserTest
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: >-
+      tools/assets-automation/assets-maintenance-tool/Azure.Sdk.Tools.Assets.MaintenanceTool
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: >-
+      tools/assets-automation/assets-maintenance-tool/Azure.Sdk.Tools.Assets.MaintenanceTool.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'pip'
+    directory: tools/assets-automation/assets-reporting
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: 'pip'
+    directory: tools/azure-rest-api-specs-examples-automation/automation
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: maven
+    directory: tools/azure-rest-api-specs-examples-automation/java/javaformat
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(maven):'
+  - package-ecosystem: 'npm'
+    directory: tools/azure-rest-api-specs-examples-automation/js/lint
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: tools/codeowners-utils/Azure.Sdk.Tools.CodeownersLinter
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/codeowners-utils/Azure.Sdk.Tools.CodeownersLinter.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/codeowners-utils/Azure.Sdk.Tools.CodeownersUtils
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/github-event-processor/Azure.Sdk.Tools.GitHubEventProcessor
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/github-event-processor/Azure.Sdk.Tools.GitHubEventProcessor.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/github-team-user-store/GitHubTeamUserStore/GitHubTeamUserStore
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/http-fault-injector/Azure.Sdk.Tools.HttpFaultInjector
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: maven
+    directory: tools/http-fault-injector/sample-clients/java/http-fault-injector-client
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(maven):'
+  - package-ecosystem: maven
+    directory: tools/http-fault-injector/sample-clients/java/storage-blobs
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(maven):'
+  - package-ecosystem: nuget
+    directory: tools/http-fault-injector/sample-clients/net/http-client
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/http-fault-injector/sample-clients/net/storage-blobs
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/http-fault-injector/sample-servers/net/http-server
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/identity-resolution
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'npm'
+    directory: tools/js-sdk-release-tools
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: >-
+      tools/js-sdk-release-tools/packages/typescript-codegen-breaking-change-detector/misc/test-cases/rest-level-client-to-rest-level-client/baseline-package
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: >-
+      tools/js-sdk-release-tools/packages/typescript-codegen-breaking-change-detector/misc/test-cases/rest-level-client-to-rest-level-client/current-package
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: >-
+      tools/js-sdk-release-tools/packages/typescript-codegen-breaking-change-detector
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: tools/js-sdk-release-tools/src/test/npm/testCases
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: tools/keyvault-mock-attestation
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: tools/mock-service-host
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: tools/net-changelog-gen-mgmt/Azure.SDK.Management.ChangelogGen
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/net-changelog-gen-mgmt/Azure.SDK.Management.ChangelogGen.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/notification-configuration/notification-creator
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/notification-configuration/notification-creator.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'npm'
+    directory: tools/oav-traffic-converter
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: tools/perf-automation/Azure.Sdk.Tools.PerfAutomation
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/perf-automation/Azure.Sdk.Tools.PerfAutomation.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/pipeline-generator/Azure.Sdk.Tools.PipelineGenerator
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/pipeline-owners-extractor/Azure.Sdk.Tools.PipelineOwnersExtractor
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/pipeline-witness/Azure.Sdk.Tools.PipelineWitness
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/pipeline-witness/Azure.Sdk.Tools.PipelineWitness.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/pixel-server/PixelServer
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/sdk-ai-bots/AzureSdkQaBot
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'pip'
+    directory: tools/sdk-ai-bots/Embeddings
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: 'npm'
+    directory: tools/sdk-testgen/common/temp
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: tools/sdk-testgen/common/temp/pnpm-local
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: tools/sdk-testgen/common/temp/projects/testmodeler
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: tools/sdk-testgen/packages/autorest.testmodeler
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.AccessManagement
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.AccessManagement.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretManagement.Cli
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretRotation.Azure
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretRotation.Configuration
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretRotation.Core
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: >-
+      tools/secret-management/Azure.Sdk.Tools.SecretRotation.Stores.AzureActiveDirectory
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: >-
+      tools/secret-management/Azure.Sdk.Tools.SecretRotation.Stores.AzureAppService
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretRotation.Stores.AzureDevOps
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretRotation.Stores.Generic
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretRotation.Stores.KeyVault
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/secret-management/Azure.Sdk.Tools.SecretRotation.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/snippet-generator/Azure.Sdk.Tools.SnippetGenerator
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/snippet-generator/Azure.Sdk.Tools.SnippetGenerator.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/stress-cluster/services/Stress.Watcher/src
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/stress-cluster/services/Stress.Watcher/tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/test-proxy/Azure.Sdk.Tools.TestProxy
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/test-proxy/Azure.Sdk.Tools.TestProxy.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'pip'
+    directory: tools/test-proxy/documentation/explore-wiremock
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: nuget
+    directory: tools/test-proxy/sample-clients/net/http-client
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: >-
+      tools/test-proxy/sample-clients/net/http-pipeline/Azure.Sdk.Tools.TestProxy.HttpPipelineSample
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: >-
+      tools/test-proxy/sample-clients/net/http-pipeline/Azure.Sdk.Tools.TestProxy.HttpPipelineTestsExample
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/test-proxy/sample-clients/net/storage-blob
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: 'pip'
+    directory: tools/test-proxy/sample-clients/python/pytest-httpsresponse
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(pip):'
+  - package-ecosystem: 'npm'
+    directory: tools/tsp-client
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: 'npm'
+    directory: >-
+      tools/tsp-client/test/examples/sdk/contosowidgetmanager/contosowidgetmanager-rest
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(npm):'
+  - package-ecosystem: nuget
+    directory: tools/version-guard/Microsoft.Azure.Sdk.Tools.VersionGuard
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/webhook-router/Azure.Sdk.Tools.WebhookRouter
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
+  - package-ecosystem: nuget
+    directory: tools/webhook-router/Azure.Sdk.Tools.WebhookRouter.Tests
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'package(nuget):'
