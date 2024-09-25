@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.10.0" />
+    <PackageReference Include="Azure.Core" Version="1.43.0" />
   </ItemGroup>
 
 </Project>
