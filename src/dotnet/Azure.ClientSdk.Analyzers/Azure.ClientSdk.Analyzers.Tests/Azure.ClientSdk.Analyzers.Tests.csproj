@@ -24,7 +24,7 @@
     </PackageReference>
     <PackageReference Include="System.Reflection.Metadata" Version="7.0.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.0.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.4.0" />
   </ItemGroup>
   <ItemGroup Condition="$(TargetFramework.StartsWith('net'))">
