@@ -1,5 +1,5 @@
 {
-  "name": "@azure-tools/js-sdk-release-tools",
+  "name": "@jacktn/js-sdk-release-tools",
   "version": "2.7.22",
   "description": "",
   "files": [
@@ -22,7 +22,7 @@
     "code-gen-pipeline": "./dist/autoGenerateInPipeline.js",
     "rlc-code-gen": "./dist/rlcCodegenCli.js"
   },
-  "author": "Microsoft Corporation",
+  "author": "jacktn",
   "license": "MIT",
   "dependencies": {
     "@azure-tools/openapi-tools-common": "^1.2.2",

@@ -20,6 +20,7 @@ import unixify from 'unixify';
 // https://github.com/Azure/azure-sdk-for-js/blob/main/documentation/steps-after-generations.md
 export async function generateAzureSDKPackage(options: ModularClientPackageOptions): Promise<PackageResult> {
     logger.info(`Start to generate modular client package for azure-sdk-for-js.`);
+    logger.error(`Test error log for SDKType.ModularClient`);
     const packageResult = initPackageResult();
     const rushScript = posix.join(options.sdkRepoRoot, 'common/scripts/install-run-rush.js');
     const rushxScript = posix.join(options.sdkRepoRoot, 'common/scripts/install-run-rushx.js');

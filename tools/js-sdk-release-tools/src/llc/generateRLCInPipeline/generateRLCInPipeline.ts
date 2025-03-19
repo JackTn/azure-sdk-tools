@@ -41,6 +41,7 @@ export async function generateRLCInPipeline(options: {
 }) {
     let packagePath: string | undefined;
     let relativePackagePath: string | undefined;
+    logger.error(`Test error log for SDKType.RestLevelClient`);
     if (options.typespecProject) {
         const typespecProject = path.join(options.swaggerRepo, options.typespecProject); 
         const generatedPackageDir = await getGeneratedPackageDirectory(typespecProject, options.sdkRepo);
